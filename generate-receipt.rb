@@ -1,5 +1,5 @@
 def receipt(price, fees)
-  d="#{Time.now.strftime("%m/%e/%Y at%l:%M %p %Z")}"
+  d="#{Time.now.strftime("%a, %b %e, %Y at%l:%M %p %Z")}"
 
   p = "$#{price}"
   fh = "#{fees[0]} sats/vByte"
