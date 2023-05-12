@@ -1,12 +1,19 @@
 def receipt(price, fees)
+  d="#{Time.now.strftime("%m/%e/%Y at%l:%M %p %Z")}"
+
+  p = "$#{price}"
+  fh = "#{fees[0]} sats/vByte"
+  fm = "#{fees[1]} sats/vByte"
+  fl = "#{fees[2]} sats/vByte"
+
   r = 
   "\
-  Bitcoin Data - #{Time.now.strftime("%m/%e/%Y at%l:%M %p %Z")}\n\
+  Bitcoin Data#{" " * (47-12-d.length)}#{d}\n\
   #{?=*47}\n\
-  Price#{" " * 14}$#{price}\n\n\
-  Fastest TX fee#{" " * 5}#{fees[0]} sats/vByte\n\
-  Half hour TX fee#{" " * 3}#{fees[1]} sats/vByte\n\
-  One hour TX fee#{" " * 4}#{fees[2]} sats/vByte"
+  Price#{" " * (47-6-p.length)}#{p}\n\n\
+  Fastest TX fee#{" " * (47-14-fh.length)}#{fh}\n\
+  Half hour TX fee#{" " * (47-16-fm.length)}#{fm}\n\
+  One hour TX fee#{" " * (47-15-fl.length)}#{fl}"
 end
 
 puts receipt("25,000", [1000,500,50])
