@@ -5,9 +5,9 @@ def receipt(price, fees)
   d="#{Time.now.strftime("%a, %b %e, %Y at%l:%M %p %Z")}"
 
   p = "$#{price}"
-  fh = "#{fees[0]} sats/vByte"
-  fm = "#{fees[1]} sats/vByte"
-  fl = "#{fees[2]} sats/vByte"
+  fh = "#{fees[0]} sats/B"
+  fm = "#{fees[1]} sats/B"
+  fl = "#{fees[2]} sats/B"
 
   r = 
   "\
