@@ -2,7 +2,7 @@ require "json"
 require "net/http"
 
 def receipt(price, fees)
-  d="#{Time.now.strftime("%a, %b %e, %Y at%l:%M %p %Z")}"
+  d="#{Time.now.strftime("%m/%e/%Y %l:%M %p %Z")}"
 
   p = "$#{price}"
   fh = "#{fees[0]} sats/B"
@@ -11,12 +11,12 @@ def receipt(price, fees)
 
   r = 
   "\
-  Bitcoin Data#{" " * (47-12-d.length)}#{d}\n\
-  #{?=*47}\n\
-  Price#{" " * (47-5-p.length)}#{p}\n\n\
-  Fastest TX fee#{" " * (47-14-fh.length)}#{fh}\n\
-  Half hour TX fee#{" " * (47-16-fm.length)}#{fm}\n\
-  One hour TX fee#{" " * (47-15-fl.length)}#{fl}"
+Bitcoin Data#{" " * (47-12-d.length)}#{d}\n\
+#{?=*47}\n\
+| Price#{" " * (43-5-p.length)}#{p} |\n|#{" " * 45}|\n\
+| Fastest TX fee#{" " * (43-14-fh.length)}#{fh} |\n\
+| Half hour TX fee#{" " * (43-16-fm.length)}#{fm} |\n\
+| One hour TX fee#{" " * (43-15-fl.length)}#{fl} |"
 end
 
 # Get data
