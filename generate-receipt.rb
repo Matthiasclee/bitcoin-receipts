@@ -5,9 +5,9 @@ def receipt(price, fees)
   d="#{Time.now.strftime("%m/%e/%Y %l:%M %p %Z")}"
 
   p = "$#{price}"
-  fh = "#{fees[0]} sats/B"
-  fm = "#{fees[1]} sats/B"
-  fl = "#{fees[2]} sats/B"
+  fh = "#{fees[0]} sat/vB"
+  fm = "#{fees[1]} sat/vB"
+  fl = "#{fees[2]} sat/vB"
 
   r = 
   "\
@@ -23,7 +23,7 @@ end
 price = Net::HTTP.get(URI("https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD"))
 price = JSON.parse(price)["USD"].to_i.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\1,').reverse
 
-fees = Net::HTTP.get(URI("https://bitcoinfees.earn.com/api/v1/fees/recommended"))
+fees = Net::HTTP.get(URI("https://mempool.space/api/v1/fees/recommended"))
 fees = JSON.parse(fees)
 
 
