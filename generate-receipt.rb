@@ -32,8 +32,8 @@ rescue
 end
 
 begin
-fees = Net::HTTP.get(URI("https://mempool.space/api/v1/fees/recommended"))
-fees = JSON.parse(fees)
+  fees = Net::HTTP.get(URI("https://mempool.space/api/v1/fees/recommended"))
+  fees = JSON.parse(fees)
 rescue
   fees = {
     "fastestFee" => "--",
