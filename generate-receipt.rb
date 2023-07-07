@@ -20,8 +20,16 @@ Bitcoin Data#{" " * (47-12-d.length)}#{d}\n\
 end
 
 # Get data
-price = Net::HTTP.get(URI("https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD"))
-price = JSON.parse(price)["USD"].to_i.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\1,').reverse
+begin
+  price = Net::HTTP.get(URI("https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms="))
+  price = JSON.parse(price)["USD"].to_i.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\1,').reverse
+
+  if JSON.parse(price)["Response"] == "Error"
+    price = "-----"
+  end
+rescue
+  price = "-----"
+end
 
 fees = Net::HTTP.get(URI("https://mempool.space/api/v1/fees/recommended"))
 fees = JSON.parse(fees)
